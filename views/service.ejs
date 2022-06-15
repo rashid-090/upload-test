@@ -1,0 +1,103 @@
+<%- include('includes/head.ejs') %>
+  <title>Service</title>
+  </head>
+
+  <body>
+
+
+    <div class="wrapper">
+      <section>
+        <div class="section">
+          <div class="top_navbar flex justify-between">
+            <div class="hamburger">
+              <a>
+                <i class="fas fa-bars"></i>
+              </a>
+            </div>
+            <div class="hidden md:block">
+              <button onclick="logout()" class="bg-violet-700 hover:bg-violet-900 py-1 px-3 mt-2 rounded-md"><a href="/admin/logout"><i class="fa-solid fa-arrow-right-from-bracket text-white"></i></a></button>
+            </div>
+          </div>
+          <h1 class="text-3xl font-bold pl-7 pt-4">Service</h1>
+          <div class="container">
+            <div class="lg:w-2/3 p-7 overflow-hidden">
+              <form action="/admin/service" method="POST">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-4">
+                  <div class="pb-4">
+                    <div class="border-dashed border-2 bg-zinc-700 border-zinc-600 p-8 rounded-lg">
+
+                      <label class="block">
+                        <span class="sr-only">Choose profile photo</span>
+                        <input
+                          type="file"
+                          name="cover"
+                          class="filepond block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100"
+                        required/>
+                      </label>
+                    </div>
+                  </div>
+
+                </div>
+                <div class="pb-4">
+                  <p class="pb-2 font-medium text-lg tracking-wide">Heading</p>
+                  <input class="outline-none bg-zinc-700 rounded-md py-2 pl-4 w-full" type="text" name="heading"
+                    placeholder=" How long does it take you to design a website on average?" required/>
+                </div>
+                <div class="pb-4">
+                  <p class="pb-2 font-medium text-lg tracking-wide">Content</p>
+                  <textarea class="outline-none bg-zinc-700 rounded-md py-2 px-4 w-full" name="content"
+                    placeholder="The total time it takes to build a website is determined by a number " required></textarea>
+                </div>
+                <div class="flex lg:justify-end">
+                  <button type="submit" class="bg-violet-800 py-3 px-6 mr-5 rounded-lg hover:bg-violet-900"><a href="/admin/service">Cancel</a></button>
+                  <button type="submit" class="bg-violet-800 py-3 px-6 rounded-lg hover:bg-violet-900">Create</button>
+                </div>
+              </form>
+            </div>
+
+
+            <% service.forEach(items => { %>
+            <div class="bg-zinc-800 md:pl-7 pt-7 p-3 lg:pr-24 h-full overflow-hidden">
+              <div class="flex flex-col lg:grid lg:grid-cols-3">
+                <div class="col-span-2 text-justify ">
+                  <div class="flex flex-col lg:flex-row">
+                    
+                    <img class="image_size" src="<%= items.coverImagePath %>">
+
+                    <div class="text-justify pl-4 pt-2">
+                      <p class="text-xl font-semibold pb-4"><%= items.heading %></p>
+                      <p class="content_size mb-2"><%= items.content %></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex justify-end pt-16 mb-5 lg:mb-0">
+                  <form method="POST" action="/admin/service/<%= items.id %>?_method=DELETE" onsubmit="return submitForm(this);">
+                    <button type="submit" href="" class="mr-10"><i class="fa-solid fa-trash hover:text-red-700""></i></button>
+                  </form>
+                  <form action="/admin/edit-service/<%= items.id %>">
+                    <button type="submit" class="mr-10"><i class="fa-solid fa-pen-to-square hover:text-violet-700""></i></button>
+                  </form>
+              </div>
+
+
+              </div>
+              <hr class="border-zinc-600">
+
+            </div>
+            <% }) %>
+
+
+
+
+          </div>
+
+
+
+        </div>
+      </section>
+
+      <%- include('includes/navbar.ejs') %>
+
+    </div>
+
+    <%- include('includes/end.ejs') %>

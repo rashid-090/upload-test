@@ -1,0 +1,88 @@
+<%- include('includes/head.ejs') %>
+<title><%= title %></title>
+</head>
+<body>
+  
+   
+    <div class="wrapper">
+      <section>
+        <div class="section">
+    <div class="top_navbar flex justify-between">
+      <div class="hamburger">
+        <a>
+          <i class="fas fa-bars"></i>
+        </a>
+      </div>
+      <div class="hidden md:block">
+ 
+            <button onclick="logout()" class="bg-violet-700 hover:bg-violet-900 py-1 px-3 mt-2 rounded-md"><a href="/admin/logout"><i class="fa-solid fa-arrow-right-from-bracket text-white"></i></a></button>
+
+      </div>
+    </div>
+    <h1 class="text-3xl font-bold pl-7 pt-4">Requirements Details</h1>
+    <div class="container overflow-hidden">
+        <div class="p-4 md:p-8">
+            <% message.forEach(items => { %>
+                <div class="bg-zinc-900 mb-6 rounded-md lg:shadow-lg lg:shadow-zinc-900 overflow-hidden">
+                    
+                    <div class="px-4 py-10  relative text-xs md:text-base">
+                        <p class="absolute top-3 right-6 text-xs text-zinc-400"><%= items.createdAt.toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"}) %></p>
+                        <div class="flex ">
+                            <label class="pr-4 w-40">Name :</label>
+                            <p><%= items.name %></p>
+                        </div>
+                        <div class="flex ">
+                            <label class="pr-4 w-40">Email:</label>
+                            <p><%= items.email %></p>
+                        </div>
+                        <div class="flex ">
+                            <label class="pr-4 w-40">Phone:</label>
+                            <p><%= items.phone %></p>
+                        </div>
+                        <div class="flex ">
+                            <label class="pr-4 w-40">How soon you start:</label>
+                            <p class=" bg-zinc-900 w-3/4 ">"<%= items.start %>"</p>
+                        </div>
+                        <div class="flex ">
+                            <label class="pr-4 w-40">Service:</label>
+                            <p class=" bg-zinc-900 w-3/4 ">"<%= items.service %>"</p>
+                        </div>
+                        <div class="flex ">
+                            <label class="pr-4 w-40">Requirements:</label>
+                            <p class=" bg-zinc-900 w-3/4 ">"<%= items.requirement %>"</p>
+                        </div>
+                        <div class="flex ">
+                            <label class="pr-4 w-40">Breif about project:</label>
+                            <p class=" bg-zinc-900 w-3/4 ">"<%= items.project %>"</p>
+                        </div>
+
+                       <div class="email-btn">
+                          <form method="POST" action="/admin/requirements/<%= items.id %>?_method=DELETE" onsubmit="return submitForm(this);">
+                            <button type="submit" href="" class="absolute top-16 right-6 hover:text-red-700"><i class="fa-solid fa-trash"></i></button>
+                          </form>
+                       </div>
+
+                    </div>
+                   
+                </div>
+                <% }) %>
+        </div>
+
+
+
+
+    </div>
+
+
+    
+  </div>
+      </section>
+
+      <%- include('includes/navbar.ejs') %>
+        
+    </div>
+ 
+    <%- include('includes/end.ejs') %>
+ 
+
+  

@@ -1,0 +1,71 @@
+<div class="sidebar">
+  <div class="profile">
+    <img src="/images/White.png" alt="profile_picture" />
+  </div>
+  <ul>
+    <li>
+      <a href="/admin/faq" class="<%= path === '/faq' ? 'active' : '' %>">
+        <span class="item">FAQ</span>
+      </a>
+    </li>
+    <li>
+      <a href="/admin/blog" class="<%= path === '/blog' ? 'active' : '' %>">
+        <span class="item">Blog</span>
+      </a>
+    </li>
+    <li>
+      <a href="/admin/service" class="<%= path === '/service' ? 'active' : '' %>">
+        <span class="item">Service</span>
+      </a>
+    </li>
+
+
+
+<!-- -------------Dropdown--------------- -->
+    <button class="dropdown-btn">Portfolio
+    <i class="fa fa-caret-down"></i>
+  </button>
+  <div class="dropdown-container">
+
+      <ul>
+        <li>
+          <a href="/admin/portfolio" class="<%= path === '/portfolio' ? 'active' : '' %>">Portfolio</a>
+          <a href="/admin/portfolio-details" class="<%= path === '/portfolio-details' ? 'active' : '' %>">Portfolio Details</a>
+        </li>
+      </ul>
+  </div>
+  <!-- --------------------------------- -->
+  <button class="dropdown-btn">Data Collection
+    <i class="fa fa-caret-down"></i>
+  </button>
+  <div class="dropdown-container">
+
+      <ul>
+        <li>
+          <a href="/admin/contact" class="<%= path === '/contact' ? 'active' : '' %>">
+            <span class="item">Contact</span>
+          </a>
+        </li>
+        <li>
+          <a href="/admin/email" class="<%= path === '/email' ? 'active' : '' %>">
+            <span class="item">Email</span>
+          </a>
+        </li>
+        <li>
+          <a href="/admin/requirements" class="<%= path === '/requirements' ? 'active' : '' %>">
+            <span class="item">Requirements</span>
+          </a>
+        </li>
+      </ul>
+  </div>
+ <!-- --------------end-------------- -->   
+
+  </ul>
+  
+  <div class="logout-section md:hidden">
+    <a href="/admin/logout" onclick="logout()" class=" py-2 px-3 rounded-md"><span class="pr-2 hover:text-white">Logout</span><i class="fa-solid fa-arrow-right-from-bracket hover:text-white"></i></a>
+  </div>
+</div>
+
+
+

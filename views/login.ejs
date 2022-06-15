@@ -1,0 +1,57 @@
+<%- include('includes/head.ejs') %>
+    <title><%= title %></title>
+  </head>
+<style>
+  input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px #27272a inset !important;
+  -webkit-text-fill-color: white !important;
+}
+</style>
+  <body>
+    <section class="login-bg">
+      
+      <div class="main -mt-28 md:-mt-0">
+        
+        <form class="bg-zinc-800 px-6 py-4 rounded-lg" action="/admin/login" method="POST">
+          <div class="flex justify-center">
+            <% if (error) { %>
+              <p class="err-msg">Username or password is incorrect</p>
+              <% }  %>
+          </div>
+          <img class="w-40 mx-auto py-6" src="https://res.cloudinary.com/dpsamxitw/image/upload/v1654513815/codler/White_kdak9d.png" />
+          <input
+            class="bg-zinc-800  w-64 border-b-2 border-zinc-600 outline-none pb-4 mb-5 text-white"
+            type="text"
+            name="username"
+            id="username"
+            placeholder="Username"
+            
+            required
+          /><br />
+
+          <input
+            class="bg-zinc-800 w-64 outline-none border-b-2 border-zinc-600 pb-4 text-white"
+            type="password"
+            name="password"
+            id="password"
+            placeholder="Password"
+            required
+          />
+          <div class="flex justify-end text-zinc-500 py-1">
+            <a href="#"><p>forget password?</p></a>
+          </div>
+          <div class="flex justify-center">
+            <button
+              class="bg-violet-800 hover:bg-violet-900 text-white py-2 my-8 w-60 rounded-lg"
+              type="submit"
+              value="Login"
+            >
+              Login
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+<%- include('includes/end.ejs') %>

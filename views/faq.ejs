@@ -1,0 +1,105 @@
+<%- include('includes/head.ejs') %>
+<title>faq</title>
+</head>
+<body>
+  
+   
+    <div class="wrapper">
+      <section>
+        <div class="section">
+    <div class="top_navbar flex justify-between">
+      <div class="hamburger">
+        <a>
+          <i class="fas fa-bars"></i>
+        </a>
+      </div>
+      <div class="hidden md:block">
+ 
+            <button onclick="logout()" class="bg-violet-700 hover:bg-violet-900 py-1 px-3 mt-2 rounded-md"><a href="/admin/logout"><i class="fa-solid fa-arrow-right-from-bracket text-white"></i></a></button>
+            
+      </div>
+    </div>
+    <h1 class="text-3xl font-bold pl-7 pt-4">FAQ</h1>
+    <div class="container overflow-hidden">
+        <div class="lg:w-2/3 p-7">
+          <form action="/admin/faq" method="POST">
+        
+               <div class="pb-4">
+                <p class="pb-2 font-medium text-base tracking-wide">Main Heading</p>
+                <input class="outline-none bg-zinc-700 rounded-md py-2 pl-4 w-full" type="text" name="heading" placeholder="Web development" required/>
+            </div>
+           
+             <div class="pb-4">
+                <p class="pb-2 font-medium text-base tracking-wide">FAQ Question</p>
+                <input class="outline-none bg-zinc-700 rounded-md py-2 pl-4 w-full" type="text" name="question" placeholder="How long does it take you to design a website on average?" required/>
+            </div>
+           
+             <div class="pb-4">
+                <p class="pb-2 font-medium text-base tracking-wide">FAQ Answer</p>
+                <!-- <input class="outline-none bg-zinc-700 rounded-md py-2 pl-4 w-full" type="text" name="answer" placeholder="The total time it takes to build a website is determined by a number " required/> -->
+                <textarea
+                    class="outline-none bg-zinc-700 rounded-md py-2 px-4 w-full"
+                    name="answer"
+                    id="answer"
+                    
+                    placeholder="The total time it takes to build a website is determined by a number "
+                    required
+                  ></textarea>
+            </div>
+           
+            <div class="flex lg:justify-end">
+              <button
+              type="submit" class="bg-violet-800 py-3 px-6 mr-5 rounded-lg hover:bg-violet-900"><a href="/admin/faq">Cancel</a></button>
+                <button type="submit" class="bg-violet-800 py-3 px-6 rounded-lg hover:bg-violet-900">Create</button>
+            </div>
+            </form>
+        </div>
+
+
+        <% faq.forEach(items => { %>
+        <div class="bg-zinc-800 pl-7 pt-7 pr-7 md:pr-24 h-full">
+            <div class="flex flex-col lg:grid lg:grid-cols-3">
+                <div class="col-span-2 text-justify">
+                 
+                        <div class="text-justify  pt-8">
+                          <p class="text-3xl font-bold pb-6 ppt"><%= items.heading %></p>
+                            <p class="text-base font-semibold pb-4"><%= items.question %></p>
+                            <p class="text-sm text-zinc-300 font-light mb-4 faq-size"><%= items.answer %></p>
+                        </div>
+                  
+                </div>
+                <div class="flex justify-end pt-16 mb-5 lg:mb-0">
+                  <form method="POST" action="/admin/faq/<%= items.id %>?_method=DELETE" onsubmit="return submitForm(this);">
+                    
+                    <button type="submit" href="" class="mr-10"><i class="fa-solid fa-trash hover:text-red-700"></i></button>
+
+                  </form>
+                  
+
+                
+
+                  <form action="/admin/edit-faq/<%= items.id %>">
+                    <button type="submit" class="mr-10"><i class="fa-solid fa-pen-to-square hover:text-violet-700"></i></button>
+                  </form>
+                </div>
+                
+            </div>
+            <hr class="border-zinc-600">
+        </div>
+        <% }) %>
+
+    </div>
+
+
+    
+  </div>
+      </section>
+
+      <%- include('includes/navbar.ejs') %>
+        
+    </div>
+ 
+    <%- include('includes/end.ejs') %>
+ 
+
+  

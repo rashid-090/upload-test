@@ -1,0 +1,73 @@
+<%- include('includes/head.ejs') %>
+  <title>Service</title>
+  </head>
+
+  <body>
+
+
+    <div class="edit-section">
+        <section>
+          <div class="section">
+              <div class="p-6">
+                  <a href="/admin/service"
+                      type="submit"
+                      id="sentbutton"
+                      class="text-4xl m-2 text-zinc-600 hover:text-violet-700 "
+                    ><i class="fa-solid fa-circle-arrow-left bg-white rounded-full "></i></a>
+              </div>
+          <h1 class="text-3xl font-bold pl-7 pt-4">Service</h1>
+          <div class="container">
+            <div class="lg:w-2/3 p-7">
+              <form action="/admin/<%= service.id %>/service?_method=PUT" method="POST">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-4">
+                  <div class="pb-4">
+                    <!-- <div class="border-dashed border-2 bg-zinc-700 border-zinc-600 p-8 rounded-lg">
+
+                      <label class="block">
+                        <span class="sr-only">Choose profile photo</span>
+                        <input type="file" name="image" class="block w-full text-sm text-slate-500
+                                        file:mr-4 file:py-2 file:px-4
+                                        file:rounded-full file:border-0
+                                        file:text-sm file:font-semibold
+                                        file:bg-violet-50 file:text-violet-700
+                                        hover:file:bg-violet-100
+                                        " required/>
+                      </label>
+
+                    </div> -->
+                  </div>
+
+                </div>
+                <div class="pb-4">
+                  <p class="pb-2 font-medium text-lg tracking-wide">Heading</p>
+                  <input class="outline-none bg-zinc-700 rounded-md py-2 pl-4 w-full" value="<%= service.heading %>" type="text" name="heading"
+                    placeholder=" How long does it take you to design a website on average?" required/>
+                </div>
+                <div class="pb-4">
+                  <p class="pb-2 font-medium text-lg tracking-wide">Content</p>
+                  <textarea class="outline-none bg-zinc-700 rounded-md py-2 px-4 w-full md:h-28"  name="content"
+                    placeholder="The total time it takes to build a website is determined by a number " required><%= service.content %></textarea>
+                </div>
+                <div class="flex lg:justify-end">
+                  <button type="submit" class="bg-violet-800 py-3 px-6 mr-5 rounded-lg hover:bg-violet-900"><a href="/admin/service">Cancel</a></button>
+                  <button type="submit" class="bg-violet-800 py-3 px-6 rounded-lg hover:bg-violet-900">Save</button>
+                </div>
+              </form>
+            </div>
+
+
+
+
+
+
+          </div>
+
+
+
+        </div>
+      </section>
+
+
+    </div>
+
+    <%- include('includes/end.ejs') %>
