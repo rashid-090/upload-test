@@ -1,3 +1,32 @@
+:root {
+  --book-cover-width: 390px;
+  --book-cover-width-large: 325px;
+  --book-cover-aspect-ratio: 0.75;
+
+}
+
+.book-cover {
+  width: var(--book-cover-width);
+  height: calc(var(--book-cover-width) / var(--book-cover-aspect-ratio));
+}
+
+.filepond--root {
+  font-family: 'Gotham Rounded';
+  margin-bottom: 0;
+  font-size: 15px;
+  margin-top: -15px;
+}
+
+.filepond--panel-root {
+  background-color: transparent;
+
+}
+
+.filepond--drop-label {
+  color: #fff;
+  margin-top: 50px;
+  font-size: inherit;
+}
 
 /* form style */
 
